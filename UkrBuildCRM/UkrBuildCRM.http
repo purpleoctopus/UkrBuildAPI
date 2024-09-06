@@ -1,0 +1,6 @@
+@UkrBuildCRM_HostAddress = http://localhost:5122
+
+GET {{UkrBuildCRM_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
