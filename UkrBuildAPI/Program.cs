@@ -1,3 +1,6 @@
+using UkrBuildAPI.Services.Implementation;
+using UkrBuildAPI.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +21,10 @@ builder.Services.AddCors(options =>
                .AllowCredentials();
     });
 });
+
+//Add other services
+
+builder.Services.AddScoped<IDataService, DataService>();
 
 var app = builder.Build();
 

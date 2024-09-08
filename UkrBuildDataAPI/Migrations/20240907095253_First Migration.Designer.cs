@@ -12,8 +12,8 @@ using UkrBuildDataAPI.Data;
 namespace UkrBuildDataAPI.Migrations
 {
     [DbContext(typeof(PostgreContext))]
-    [Migration("20240906205140_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20240907095253_First Migration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,6 @@ namespace UkrBuildDataAPI.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Position")

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using UkrBuildDataAPI.Data.Repository.Interfaces;
 
 namespace UkrBuildDataAPI.Controllers
 {
@@ -7,13 +7,20 @@ namespace UkrBuildDataAPI.Controllers
     [ApiController]
     public class StateController : ControllerBase
     {
-        public StateController()
+        private readonly IPostgreStateRepository _postgreState;
+
+        public StateController(IPostgreStateRepository postgreState)
         {
-            
+            this._postgreState = postgreState;
         }
         [HttpGet]
-        public IActionResult GetState()
+        public async Task<IActionResult> GetStateAsync()
         {
+            var dbState = await _postgreState.CheckConnection();
+
+            if (dbState == false)
+                return StatusCode(500, "Database error");
+
             return Ok();
         }
     }

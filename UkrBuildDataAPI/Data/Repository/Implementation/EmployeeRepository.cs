@@ -12,6 +12,14 @@ namespace UkrBuildDataAPI.Data.Repository.Implementation
         {
             _context = context;
         }
+
+        public async Task<Employee> AddEmployee(Employee employee)
+        {
+            await _context.AddAsync(employee);
+            await _context.SaveChangesAsync();
+            return employee;
+        }
+
         public async Task<List<Employee>> GetAllEmployees()
         {
             List<Employee> result;

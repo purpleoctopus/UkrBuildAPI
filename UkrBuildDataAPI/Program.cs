@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using UkrBuildAPI.Shared.Models.Domain;
 using UkrBuildDataAPI.Data;
 using UkrBuildDataAPI.Data.Repository.Implementation;
 using UkrBuildDataAPI.Data.Repository.Interfaces;
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<PostgreContext>(options =>
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IPostgreStateRepository, PostgreStateRepository>();
 
 builder.Services.AddControllers();
 
@@ -36,5 +38,11 @@ app.UseCors(options => {
     options.AllowAnyOrigin();
     options.AllowAnyMethod();
 });
+
+/*using(var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider.GetRequiredService<IEmployeeRepository>();
+    await service.AddEmployee(new Employee());
+*/
 
 app.Run();

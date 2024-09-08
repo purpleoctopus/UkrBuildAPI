@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace UkrBuildAPI.Shared.Enums
 {
     public enum EmployeePosition
     {
-        HR,
-        PM
+        PR,
+        PM,
+        Foreman
     }
 }

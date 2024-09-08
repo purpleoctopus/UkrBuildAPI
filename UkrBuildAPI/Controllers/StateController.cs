@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using UkrBuildAPI.Services.Interfaces;
 
 namespace UkrBuildAPI.Controllers
 {
@@ -7,10 +7,20 @@ namespace UkrBuildAPI.Controllers
     [ApiController]
     public class StateController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetServerState()
+        private readonly IDataService dataService;
+
+        public StateController(IDataService dataService)
         {
-            return Ok();
+            this.dataService = dataService;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetServerState()
+        {
+            string dataServiceState = await dataService.IsAvailable() ? "OK" : "FAIL";
+
+            Object response = new { DataService = dataServiceState };
+
+            return Ok(response);
         }
     }
 }
