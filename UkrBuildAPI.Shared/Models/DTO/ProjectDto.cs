@@ -1,9 +1,9 @@
-﻿
-namespace UkrBuildAPI.Shared.Models.Domain
+﻿using UkrBuildAPI.Shared.Models.Domain;
+
+namespace UkrBuildAPI.Shared.Models.DTO
 {
-    public class Project
+    public class ProjectDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateOnly StartDate { get; set; }

@@ -10,7 +10,7 @@ namespace UkrBuildAPI.Services.Implementation
 
         public DataService(IConfiguration configuration)
         {
-            serviceUri = configuration.GetSection("Services")["DataService"] ?? throw new Exception("Bad Uri");
+            serviceUri = configuration["Services:DataService"] ?? throw new Exception("Bad Uri");
         }
 
         public async Task<bool> IsAvailable()

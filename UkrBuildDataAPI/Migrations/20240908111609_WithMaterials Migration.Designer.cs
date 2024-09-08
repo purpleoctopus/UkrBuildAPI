@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using UkrBuildDataAPI.Data;
@@ -11,9 +12,11 @@ using UkrBuildDataAPI.Data;
 namespace UkrBuildAPI.Data.Migrations
 {
     [DbContext(typeof(PostgreContext))]
-    partial class PostgreContextModelSnapshot : ModelSnapshot
+    [Migration("20240908111609_WithMaterials Migration")]
+    partial class WithMaterialsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

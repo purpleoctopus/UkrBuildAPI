@@ -8,5 +8,7 @@ namespace UkrBuildDataAPI.Data
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<MaterialsList> MaterialsList { get; set; }
     }
 }
